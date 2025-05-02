@@ -3,69 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Repo-Editor - Descarga</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #f1f1f1;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .container {
-      text-align: center;
-      max-width: 600px;
-      padding: 2rem;
-    }
-
-    h1 {
-      color: #00ffc8;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    .download-btn {
-      background-color: #00ffc8;
-      color: #121212;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-
-    .download-btn:hover {
-      background-color: #00e6b3;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 1rem;
-      font-size: 0.9rem;
-      color: #888;
-    }
-  </style>
+  <title>Descargar Repo-Editor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div class="container">
-    <h1>Repo-Editor</h1>
-    <p>Bienvenido al editor de partidas del juego <strong>REPO</strong>. Descarga el instalador oficial a continuación:</p>
-    <a href="https://drive.google.com/uc?export=download&id=1dfVlBQcp62ql_b_jqaT4w_WWFx9S6kkV" class="download-btn" target="_blank" rel="noopener">Descargar Instalador (EXE)</a>
-  </div>
+    <h1 class="fade-in delay-1"><i class="fas fa-gamepad"></i> Repo-Editor</h1>
+    <p class="subtitle fade-in delay-2">Modifica partidas del juego <strong>REPO</strong> fácilmente.</p>
 
-  <footer>Desarrollado por Jose © 2025</footer>
+    <a href="https://github.com/JoseGR1/repo-editor/releases/download/v1.0/Repo-Editor-Setup.exe"
+       class="download-btn fade-in delay-3"
+       target="_blank" rel="noopener">
+      <i class="fas fa-download"></i> Descargar Instalador (.exe)
+    </a>
+
+    <section class="features fade-in delay-4">
+      <h2><i class="fas fa-tools"></i> ¿Qué puedes hacer con Repo-Editor?</h2>
+      <ul>
+        <li><i class="fas fa-user-cog"></i> <strong>Editar estadísticas del jugador:</strong> salud, estamina, salto, velocidad, fuerza y más.</li>
+        <li><i class="fas fa-boxes"></i> <strong>Modificar el inventario:</strong> añade o quita objetos fácilmente con botones intuitivos.</li>
+        <li><i class="fas fa-globe"></i> <strong>Editar datos del mundo:</strong> nivel, dinero, progreso, vidas.</li>
+        <li><i class="fas fa-code"></i> <strong>Modo Avanzado:</strong> edita directamente el archivo JSON de la partida para control total.</li>
+      </ul>
+    </section>
+  </div>
+  
+  <footer class="fade-in delay-5">
+    JoseGR1 © <span id="year"></span>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      body.classList.add('light');
+      toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('light');
+      const isLight = body.classList.contains('light');
+      toggleBtn.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  });
+  </script>
+  <button id="theme-toggle" aria-label="Cambiar tema">
+    <i class="fas fa-moon"></i>
+  </button>
+  
 </body>
 </html>
